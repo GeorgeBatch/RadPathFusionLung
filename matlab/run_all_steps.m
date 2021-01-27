@@ -1,14 +1,14 @@
 example_id = '';
 
-%path to your elastix executable; Dont forget \" to escape the space and allow elastix
+%path to your elastix executable; Dont forget /" to escape the space and allow elastix
 %running
-elastix_base = '"C:\Program Files\elastix_v4.8\\"';
+elastix_base = '"/Users/cdtadmin/Desktop/elastix_v4.8//"'; % changed directory and replaced all \ with /
 elastix_exe = [elastix_base, 'elastix']; 
 transformix_exe = [elastix_base, 'transformix']; 
 
 
 % all important marks
-prefix_masks = {'\sample\';'\lesion\';'\invasive\';'\blood\'};
+prefix_masks = {'/sample/';'/lesion/';'/invasive/';'/blood/'};
 
 %which mask should be used to drive the registration (used to crop the img)
 id_roi = 2;
