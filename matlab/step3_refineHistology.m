@@ -8,20 +8,20 @@ this_script = mfilename('fullpath');
 [this_path,name,ext] = fileparts(this_script);
 
 %location of the util code
-addpath(genpath([this_path,'\util\']))
+addpath(genpath([this_path,'/util/']))
 
 %location of the data
-path_base = [this_path, '\..\example',example_id,'\'];
+path_base = [this_path, '/../example',example_id,'/'];
 
 % location downsample histology images
-path_img = [path_base,'\data\Histology\imgs\']; 
+path_img = [path_base,'/data/Histology/imgs/']; 
 
 % masks have to have the exact same name as the histology files
-path_masks = [path_base,'\data\Histology\masks\']; 
+path_masks = [path_base,'/data/Histology/masks/']; 
 
 % folder would be overwrote if it already exist
-param_fn = [path_base, '\output',output_id,'\step1_reconstructHistology\params.mat'];
-path_out = [path_base, '\output',output_id,'\step3_refineHistology\']; 
+param_fn = [path_base, '/output',output_id,'/step1_reconstructHistology/params.mat'];
+path_out = [path_base, '/output',output_id,'/step3_refineHistology/']; 
 
 
 weight_entire_sample = 0.0001;  
@@ -38,8 +38,8 @@ paddingOnZ = 4;
 
 % should the data be flipped on Z
 flip_LR_vol = 0;
-path_target = [path_base,'\output',output_id,'\step2_exhaustiveSearch\',num2str(flip_LR_vol),'\1\moving\result.mha'];
-path_out_run = [path_out,'\',num2str(flip_LR_vol),'\']; 
+path_target = [path_base,'/output',output_id,'/step2_exhaustiveSearch/',num2str(flip_LR_vol),'/1/moving/result.mha'];
+path_out_run = [path_out,'/',num2str(flip_LR_vol),'/']; 
 if (exist(path_out_run)==0)
     disp(['Creating folder', path_out_run]);
     mkdir(path_out_run)
@@ -66,8 +66,8 @@ writeReconstruction(path_out_mha, prefix_masks,reconstruction, reconstructionR, 
 
 load(param_fn)
 flip_LR_vol = 1;
-path_target = [path_base,'\output',output_id,'\step2_exhaustiveSearch\',num2str(flip_LR_vol),'\1\moving\result.mha'];
-path_out_run = [path_out,'\',num2str(flip_LR_vol),'\']; 
+path_target = [path_base,'/output',output_id,'/step2_exhaustiveSearch/',num2str(flip_LR_vol),'/1/moving/result.mha'];
+path_out_run = [path_out,'/',num2str(flip_LR_vol),'/']; 
 if (exist(path_out_run)==0)
     disp(['Creating folder', path_out_run]);
     mkdir(path_out_run)
